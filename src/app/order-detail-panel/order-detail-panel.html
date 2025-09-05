@@ -1,0 +1,11 @@
+<div style="background: #fff7e6; border-radius: 8px; padding: 1rem;">
+    <h3 style="color: #ff9800;">Listado de Órdenes</h3>
+    <ul style="list-style: none; padding: 0;">
+        <li 
+        (click)="selectOrder(order)"
+        *ngFor="let order of orders"
+            style="margin-bottom: 0.5rem; background: #ffe0b2; color: #e65100; padding: 0.5rem 1rem; border-radius: 4px;">
+            {{ order.number }}
+        </li>
+    </ul>
+</div>

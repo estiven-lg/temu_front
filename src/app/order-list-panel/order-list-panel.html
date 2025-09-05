@@ -1,0 +1,31 @@
+
+<div class="bg-orange-50 rounded-lg p-4 shadow">
+	<h3 class="text-orange-600 text-lg font-bold mb-4">Detalles de la Orden</h3>
+	<ul *ngIf="orderDetails?.length; else noDetails" class="divide-y divide-orange-100">
+		<li *ngFor="let detail of orderDetails" class="py-2 flex flex-col gap-1">
+			<div class="flex justify-between text-orange-700 text-sm">
+				<span class="font-semibold">Item ID:</span>
+				<span>{{ detail.itemId }}</span>
+			</div>
+			<div class="flex justify-between text-orange-700 text-sm">
+				<span class="font-semibold">Cantidad:</span>
+				<span>{{ detail.quantity }}</span>
+			</div>
+			<div class="flex justify-between text-orange-700 text-sm">
+				<span class="font-semibold">Precio:</span>
+				<span>{{ detail.price }}</span>
+			</div>
+			<div class="flex justify-between text-orange-700 text-sm">
+				<span class="font-semibold">Total:</span>
+				<span>{{ detail.total }}</span>
+			</div>
+			<div class="flex justify-between text-orange-400 text-xs">
+				<span>Creado:</span>
+				<span>{{ detail.createdAt }}</span>
+			</div>
+		</li>
+	</ul>
+	<ng-template #noDetails>
+		<p class="text-orange-400">No hay detalles para esta orden.</p>
+	</ng-template>
+</div>
