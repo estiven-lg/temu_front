@@ -3,18 +3,18 @@
 	class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow mb-8">
 	<h3 class="text-orange-600 text-xl font-bold mb-6">Crear Nuevo Pedido</h3>
 	<div class="mb-4">
-		<label for="personId" class="block text-orange-700 font-medium mb-1">Persona ID</label>
+		<label for="personId" class="block text-black font-medium mb-1">Persona ID</label>
 		<select id="personId" [(ngModel)]="order.personId" name="personId"
-			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black">
 			<option [ngValue]="null">Seleccione una persona</option>
 			<option *ngFor="let person of persons" [ngValue]="person.id">{{ person.firstName }} {{ person.lastName }}
 			</option>
 		</select>
 	</div>
 	<div class="mb-4">
-		<label for="number" class="block text-orange-700 font-medium mb-1">Número</label>
+		<label for="number" class="block text-black font-medium mb-1">Número</label>
 		<input id="number" type="number" [(ngModel)]="order.number" name="number"
-			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black" />
 	</div>
 	<button type="submit"
 		class="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded px-4 py-2 transition">Crear
@@ -30,8 +30,8 @@
 			<span>{{ order.id }}</span>
 		</div>
 		<div class="flex justify-between text-orange-700 text-sm">
-			<span class="font-semibold">Persona ID:</span>
-			<span>{{ order.personId }}</span>
+			<span class="font-semibold">Persona:</span>
+			<span>{{ order.person.firstName }} {{ order.person.lastName }}</span>
 		</div>
 		<div class="flex justify-between text-orange-700 text-sm">
 			<span class="font-semibold">Número:</span>
@@ -52,23 +52,23 @@
 	<form class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow " (ngSubmit)="addOrderDetail()">
 		<h3 class="text-orange-600 text-xl font-bold mb-6">Agregar Producto a la Orden</h3>
 		<div class="mb-4">
-			<label for="od-itemId" class="block text-orange-700 font-medium mb-1">Item ID</label>
+			<label for="od-itemId" class="block text-black font-medium mb-1">Item ID</label>
 			<select id="od-itemId" [(ngModel)]="orderDetail.itemId" name="itemId"
-				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black">
 				<option [ngValue]="null">Seleccione un producto</option>
 				<option *ngFor="let item of items" [ngValue]="item.id">{{ item.name }}</option>
 			</select>
 		</div>
 
 		<div class="mb-4">
-			<label for="od-quantity" class="block text-orange-700 font-medium mb-1">Cantidad</label>
+			<label for="od-quantity" class="block text-black font-medium mb-1">Cantidad</label>
 			<input id="od-quantity" type="number" [(ngModel)]="orderDetail.quantity" name="quantity"
-				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black" />
 		</div>
 		<div class="mb-4">
-			<label for="od-price" class="block text-orange-700 font-medium mb-1">Precio</label>
+			<label for="od-price" class="block text-black font-medium mb-1">Precio</label>
 			<input id="od-price" type="number" step="0.01" [(ngModel)]="orderDetail.price" name="price"
-				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 text-black" />
 		</div>
 
 		<button type="submit"

@@ -11,7 +11,7 @@
             (click)="selectOrder(order)"
             *ngFor="let order of orders"
             style="margin-bottom: 0.5rem; background: #ffe0b2; color: #e65100; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
-            {{ order.number }}
+            {{ order.number }} - {{ order.person.firstName }} {{ order.person.lastName }}
         </li>
     </ul>
 </div>

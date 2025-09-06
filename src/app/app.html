@@ -1,14 +1,14 @@
-<div style="display: flex; height: 100vh;">
+<div class="flex h-screen" style="background: #0d1b41;">
 	<!-- Panel izquierdo: OrderDetail -->
-	<div style="flex: 1; border-right: 1px solid #eee; padding: 1rem; min-width: 300px;">
+			<div class="flex-1 border-r border-blue-700 p-4 min-w-[300px] text-white">
 		<app-order-detail-panel (orderSelected)="onOrderSelected($event)"></app-order-detail-panel>
 	</div>
 	<!-- Panel central: OrderForm -->
-	<div style="flex: 2; padding: 1rem; min-width: 400px;">
+			<div class="flex-2 p-4 min-w-[400px]  shadow-lg rounded-lg mx-4 text-white border border-orange-700">
 		<app-order-form-panel [order]="selectedOrder"></app-order-form-panel>
 	</div>
 	<!-- Panel derecho: OrderList -->
-	<div style="flex: 1; border-left: 1px solid #eee; padding: 1rem; min-width: 300px;">
+			<div class="flex-1 border-l border-blue-700 p-4 min-w-[300px] text-white">
 		<app-order-list-panel [orderDetails]="selectedOrderDetail"></app-order-list-panel>
 	</div>
 </div>
