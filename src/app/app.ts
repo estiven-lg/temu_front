@@ -10,7 +10,7 @@ import { OrderDetailService } from './services/order-detail';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, OrderListPanel, OrderFormPanel, OrderDetailPanel],
+  imports: [OrderListPanel, OrderFormPanel, OrderDetailPanel],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

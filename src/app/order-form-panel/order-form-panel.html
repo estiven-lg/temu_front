@@ -1,24 +1,30 @@
-
-
-
 <!-- Solo mostrar el formulario si el pedido es nuevo (no tiene id) -->
-<form *ngIf="order && !order.id" class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow mb-8">
+<form *ngIf="order && !order.id" (ngSubmit)="saveOrder()"
+	class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow mb-8">
 	<h3 class="text-orange-600 text-xl font-bold mb-6">Crear Nuevo Pedido</h3>
 	<div class="mb-4">
 		<label for="personId" class="block text-orange-700 font-medium mb-1">Persona ID</label>
-		<input id="personId" type="number" [(ngModel)]="order.personId" name="personId" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+		<select id="personId" [(ngModel)]="order.personId" name="personId"
+			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+			<option [ngValue]="null">Seleccione una persona</option>
+			<option *ngFor="let person of persons" [ngValue]="person.id">{{ person.firstName }} {{ person.lastName }}
+			</option>
+		</select>
 	</div>
 	<div class="mb-4">
 		<label for="number" class="block text-orange-700 font-medium mb-1">Número</label>
-		<input id="number" type="number" [(ngModel)]="order.number" name="number" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+		<input id="number" type="number" [(ngModel)]="order.number" name="number"
+			class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
 	</div>
-	<button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded px-4 py-2 transition">Crear Pedido</button>
+	<button type="submit"
+		class="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded px-4 py-2 transition">Crear
+		Pedido</button>
 </form>
 
 <!-- Si el pedido ya existe, solo mostrar la información en modo lectura -->
 
-<div *ngIf="order && order.id" class="bg-orange-50 rounded-lg p-4 max-w-md mx-auto shadow mb-8">
-	<div class="flex flex-col gap-2">
+<div *ngIf="order && order.id" class="rounded-lg p-4 max-w-md mx-auto shadow mb-8">
+	<div class="flex flex-col gap-2 bg-orange-50 rounded-lg p-4 mb-6">
 		<div class="flex justify-between text-orange-700 text-sm">
 			<span class="font-semibold">ID:</span>
 			<span>{{ order.id }}</span>
@@ -40,20 +46,34 @@
 			<span>{{ order.updatedAt }}</span>
 		</div>
 	</div>
+
+	<!-- Formulario para agregar productos a la orden -->
+
+	<form class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow " (ngSubmit)="addOrderDetail()">
+		<h3 class="text-orange-600 text-xl font-bold mb-6">Agregar Producto a la Orden</h3>
+		<div class="mb-4">
+			<label for="od-itemId" class="block text-orange-700 font-medium mb-1">Item ID</label>
+			<select id="od-itemId" [(ngModel)]="orderDetail.itemId" name="itemId"
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+				<option [ngValue]="null">Seleccione un producto</option>
+				<option *ngFor="let item of items" [ngValue]="item.id">{{ item.name }}</option>
+			</select>
+		</div>
+
+		<div class="mb-4">
+			<label for="od-quantity" class="block text-orange-700 font-medium mb-1">Cantidad</label>
+			<input id="od-quantity" type="number" [(ngModel)]="orderDetail.quantity" name="quantity"
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+		</div>
+		<div class="mb-4">
+			<label for="od-price" class="block text-orange-700 font-medium mb-1">Precio</label>
+			<input id="od-price" type="number" step="0.01" [(ngModel)]="orderDetail.price" name="price"
+				class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+		</div>
+
+		<button type="submit"
+			class="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded px-4 py-2 transition mt-4">Agregar
+			Producto</button>
+	</form>
+
 </div>
-
-<!-- Formulario para agregar productos a la orden -->
-
-<form *ngIf="orderDetail" class="bg-orange-50 rounded-lg p-6 max-w-md mx-auto shadow">
-	<h3 class="text-orange-600 text-xl font-bold mb-6">Agregar Producto a la Orden</h3>
-	<div class="mb-4">
-		<label for="od-itemId" class="block text-orange-700 font-medium mb-1">Item ID</label>
-		<input id="od-itemId" type="number" [(ngModel)]="orderDetail.itemId" name="itemId" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
-	</div>
-	<div class="mb-4">
-		<label for="od-quantity" class="block text-orange-700 font-medium mb-1">Cantidad</label>
-		<input id="od-quantity" type="number" [(ngModel)]="orderDetail.quantity" name="quantity" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400" />
-	</div>
-	
-	<button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded px-4 py-2 transition mt-4">Agregar Producto</button>
-</form>

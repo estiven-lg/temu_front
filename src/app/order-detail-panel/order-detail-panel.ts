@@ -26,4 +26,14 @@ export class OrderDetailPanel {
   selectOrder(order: Order) {
     this.orderSelected.emit(order);
   }
+
+  addOrder() {
+    const newOrder: Order = {
+      id: null, personId: null, number: null,
+      person: undefined,
+      createdAt: undefined,
+      orderDetails: [],
+    };
+    this.orderSelected.emit(newOrder);
+  }
 }
